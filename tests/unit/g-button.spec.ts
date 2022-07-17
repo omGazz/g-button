@@ -27,4 +27,14 @@ describe('GButton.vue', () => {
 
     expect(typeof wrapper.props().text).toBe("string")
   })
+
+  it("have a getter that return same value of prop", () => {
+    const text = "foo";
+
+    const wrapper = shallowMount(GButton, {
+      props: { text }
+    })
+
+    expect(wrapper.vm._text).toEqual(text)
+  })
 })

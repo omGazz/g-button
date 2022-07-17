@@ -4,15 +4,18 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
+import { Prop } from "vue-property-decorator";
+import { Options, Vue } from "vue-class-component";
 
 @Options({
-  props: {
-    text: String
-  }
+  name: "g-button"
 })
 export default class GButton extends Vue {
-  
+  @Prop() text!: string;
+
+  get _text(): string {
+    return this.text
+  }
 }
 </script>
 
