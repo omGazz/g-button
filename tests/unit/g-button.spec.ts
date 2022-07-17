@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils'
+import { shallowMount, mount } from '@vue/test-utils'
 import GButton from '@/components/g-button.vue'
 
 describe('GButton.vue', () => {
@@ -36,5 +36,25 @@ describe('GButton.vue', () => {
     })
 
     expect(wrapper.vm._text).toEqual(text)
+  })
+
+  it("have to be a visible span", () => {
+    const textProp = "Foo";
+    const wrapper = shallowMount(GButton, {
+      props: { textProp }
+    })
+
+    expect(wrapper.find("span").element)
+    expect(wrapper.find("span").isVisible()).toBe(true);
+
+  })
+
+  it("have to render prop text", () => {
+    const textProp = "Foo";
+    const wrapper = mount(GButton, {
+      props: { textProp }
+    })
+    const span = wrapper.find("span");
+    expect(span.html().includes(textProp)).toBe(true);
   })
 })

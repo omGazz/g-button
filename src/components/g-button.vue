@@ -1,6 +1,7 @@
 <template>
-  <div class="g-button">
-  </div>
+  <span class="g-button">
+    {{ _text }}
+  </span>
 </template>
 
 <script lang="ts">
